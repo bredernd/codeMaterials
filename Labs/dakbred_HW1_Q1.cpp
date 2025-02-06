@@ -4,14 +4,12 @@ using namespace std;
 
 const int N = 5;  // Checkbook capacity
 
-// Define Check struct
 struct Check {
     int checkNum;
     string checkMemo;
     float checkAmount;
 };
 
-// Define CheckBook class
 class CheckBook {
 private:
     float balance;
@@ -21,20 +19,19 @@ private:
     const int checkLimit;
 
 public:
-    // Default constructor
+
     CheckBook() : balance(0.0f), lastDeposit(0.0f), numOfChecks(0), checkLimit(N) {}
 
-    // Constructor with initial balance
+
     CheckBook(float initialBalance) : balance(initialBalance), lastDeposit(0.0f), numOfChecks(0), checkLimit(N) {}
 
-    // Deposit function
+
     void deposit(float amount) {
         balance += amount;
         lastDeposit = amount;
         cout << "Deposited: $" << amount << ", New Balance: $" << balance << endl;
     }
 
-    // Display checks in chronological order
     void displayChecks() const {
         cout << "Checks (Most Recent First):\n";
         for (int i = numOfChecks - 1; i >= 0; --i) {
@@ -44,7 +41,6 @@ public:
         }
     }
 
-    // Write a check
     bool writeCheck(float amount) {
         if (numOfChecks >= checkLimit || amount > balance) {
             cout << "Unable to write check: Insufficient balance or checkbook full." << endl;
